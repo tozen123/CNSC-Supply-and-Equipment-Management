@@ -1,7 +1,7 @@
 ﻿
-namespace CNSC_Supply_and_Equipment_Management.Transactions.RequestForms
+namespace CNSC_Supply_and_Equipment_Management.Transactions
 {
-    partial class RequestEquipmentForm
+    partial class ViewRequest
     {
         /// <summary>
         /// Required designer variable.
@@ -29,18 +29,10 @@ namespace CNSC_Supply_and_Equipment_Management.Transactions.RequestForms
         /// </summary>
         private void InitializeComponent()
         {
-            this.SuspendLayout();
-            // 
-            // RequestEquipmentForm
-            // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.components = new System.ComponentModel.Container();
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Name = "RequestEquipmentForm";
-            this.Text = "RequestEquipmentForm";
-            this.Load += new System.EventHandler(this.RequestEquipmentForm_Load);
-            this.ResumeLayout(false);
-
+            this.Text = "ViewRequest";
         }
 
         #endregion

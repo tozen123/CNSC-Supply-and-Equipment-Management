@@ -122,23 +122,23 @@
     <Compile Include="LoginForm.Designer.cs">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Transactions\RequestForms\RequestEquipmentForm.cs">
+    <Compile Include="Transactions\RequestForms\RequestSupplyEquipmentForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Transactions\RequestForms\RequestEquipmentForm.Designer.cs">
-      <DependentUpon>RequestEquipmentForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Transactions\RequestForms\RequestSupplyForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Transactions\RequestForms\RequestSupplyForm.Designer.cs">
-      <DependentUpon>RequestSupplyForm.cs</DependentUpon>
+    <Compile Include="Transactions\RequestForms\RequestSupplyEquipmentForm.Designer.cs">
+      <DependentUpon>RequestSupplyEquipmentForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Transactions\ViewPendingRequestsTransactionForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Transactions\ViewPendingRequestsTransactionForm.Designer.cs">
       <DependentUpon>ViewPendingRequestsTransactionForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Transactions\ViewRequest.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Transactions\ViewRequest.Designer.cs">
+      <DependentUpon>ViewRequest.cs</DependentUpon>
     </Compile>
     <Compile Include="User.cs" />
     <Compile Include="Main.cs">
@@ -197,11 +197,8 @@
     <EmbeddedResource Include="Transactions\CreateTransactionRequest.resx">
       <DependentUpon>CreateTransactionRequest.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Transactions\RequestForms\RequestEquipmentForm.resx">
-      <DependentUpon>RequestEquipmentForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Transactions\RequestForms\RequestSupplyForm.resx">
-      <DependentUpon>RequestSupplyForm.cs</DependentUpon>
+    <EmbeddedResource Include="Transactions\RequestForms\RequestSupplyEquipmentForm.resx">
+      <DependentUpon>RequestSupplyEquipmentForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Transactions\ViewPendingRequestsTransactionForm.resx">
       <DependentUpon>ViewPendingRequestsTransactionForm.cs</DependentUpon>

@@ -34,6 +34,7 @@ namespace CNSC_Supply_and_Equipment_Management
             this.labelCustodianName = new System.Windows.Forms.Label();
             this.labelOfficeAcronym = new System.Windows.Forms.Label();
             this.labelRequestSubmittedDate = new System.Windows.Forms.Label();
+            this.labelReqId = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // labelOffice
@@ -88,11 +89,22 @@ namespace CNSC_Supply_and_Equipment_Management
             this.labelRequestSubmittedDate.TabIndex = 4;
             this.labelRequestSubmittedDate.Text = "label1";
             // 
+            // labelReqId
+            // 
+            this.labelReqId.AutoSize = true;
+            this.labelReqId.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelReqId.Location = new System.Drawing.Point(24, 114);
+            this.labelReqId.Name = "labelReqId";
+            this.labelReqId.Size = new System.Drawing.Size(35, 13);
+            this.labelReqId.TabIndex = 5;
+            this.labelReqId.Text = "label1";
+            // 
             // PendingRequestControlBox
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.Controls.Add(this.labelReqId);
             this.Controls.Add(this.labelRequestSubmittedDate);
             this.Controls.Add(this.labelOfficeAcronym);
             this.Controls.Add(this.labelCustodianName);
@@ -113,5 +125,6 @@ namespace CNSC_Supply_and_Equipment_Management
         private System.Windows.Forms.Label labelCustodianName;
         private System.Windows.Forms.Label labelOfficeAcronym;
         private System.Windows.Forms.Label labelRequestSubmittedDate;
+        private System.Windows.Forms.Label labelReqId;
     }
 }

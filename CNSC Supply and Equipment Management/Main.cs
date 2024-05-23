@@ -154,7 +154,8 @@ namespace CNSC_Supply_and_Equipment_Management
 
         private void requestToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            new CreateTransactionRequest().Show();
+            //new CreateTransactionRequest().Show();
+            new Transactions.RequestForms.RequestSupplyEquipmentForm().Show();
         }
 
         private void pendingRequestsToolStripMenuItem_Click(object sender, EventArgs e)

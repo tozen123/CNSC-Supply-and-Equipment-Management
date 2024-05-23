@@ -17,6 +17,8 @@ namespace CNSC_Supply_and_Equipment_Management
         string name;
         DateTime reqsubmittedate;
 
+        string request_id;
+
         public PendingRequestControlBox()
         {
             InitializeComponent();
@@ -28,6 +30,7 @@ namespace CNSC_Supply_and_Equipment_Management
             labelOfficeAcronym.Text = officeacronym;
             labelOffice.Text = officename;
             labelRequestSubmittedDate.Text = reqsubmittedate.ToString();
+            labelReqId.Text = request_id;
 
             this.Dock = DockStyle.Right;
         }
@@ -48,6 +51,10 @@ namespace CNSC_Supply_and_Equipment_Management
         public void SetSubmittedDate(DateTime _date)
         {
             reqsubmittedate = _date;
+        }
+        public void SetRequestId(string _req_id)
+        {
+            request_id = _req_id;
         }
 
         private void buttonView_Click(object sender, EventArgs e)

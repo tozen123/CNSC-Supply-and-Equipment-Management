@@ -52,7 +52,7 @@ namespace CNSC_Supply_and_Equipment_Management
         {
             if (checkBoxSupply.Checked)
             {
-                using (Transactions.RequestForms.RequestSupplyForm form = new Transactions.RequestForms.RequestSupplyForm())
+                using (Transactions.RequestForms.RequestSupplyEquipmentForm form = new Transactions.RequestForms.RequestSupplyEquipmentForm())
                 {
                     var result = form.ShowDialog();
                     if (result == DialogResult.OK)
@@ -67,22 +67,22 @@ namespace CNSC_Supply_and_Equipment_Management
                 }
 
             }
-            if (checkBoxEquipment.Checked)
-            {
-                using (Transactions.RequestForms.RequestEquipmentForm form = new Transactions.RequestForms.RequestEquipmentForm())
-                {
-                    var result = form.ShowDialog();
-                    if (result == DialogResult.OK)
-                    {
+            //if (checkBoxEquipment.Checked)
+            //{
+            //    using (Transactions.RequestForms.RequestEquipmentForm form = new Transactions.RequestForms.RequestEquipmentForm())
+            //    {
+            //        var result = form.ShowDialog();
+            //        if (result == DialogResult.OK)
+            //        {
 
 
-                    }
-                    else
-                    {
-                        this.Close();
-                    }
-                }
-            }
+            //        }
+            //        else
+            //        {
+            //            this.Close();
+            //        }
+            //    }
+            //}
           
 
         }

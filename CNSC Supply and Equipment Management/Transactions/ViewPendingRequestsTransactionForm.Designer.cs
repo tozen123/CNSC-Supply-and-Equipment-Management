@@ -34,21 +34,22 @@ namespace CNSC_Supply_and_Equipment_Management.Transactions
             this.textBoxSearch = new System.Windows.Forms.TextBox();
             this.comboBoxOffices = new System.Windows.Forms.ComboBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.comboBoxDate = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // flowLayoutPanelRequests
             // 
-            this.flowLayoutPanelRequests.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.flowLayoutPanelRequests.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.flowLayoutPanelRequests.AutoScroll = true;
             this.flowLayoutPanelRequests.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.flowLayoutPanelRequests.Location = new System.Drawing.Point(12, 178);
+            this.flowLayoutPanelRequests.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.flowLayoutPanelRequests.Location = new System.Drawing.Point(12, 169);
             this.flowLayoutPanelRequests.Name = "flowLayoutPanelRequests";
-            this.flowLayoutPanelRequests.Size = new System.Drawing.Size(862, 397);
+            this.flowLayoutPanelRequests.Size = new System.Drawing.Size(876, 476);
             this.flowLayoutPanelRequests.TabIndex = 1;
             // 
             // label2
@@ -65,7 +66,7 @@ namespace CNSC_Supply_and_Equipment_Management.Transactions
             // 
             this.textBoxSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.textBoxSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxSearch.Location = new System.Drawing.Point(502, 50);
+            this.textBoxSearch.Location = new System.Drawing.Point(516, 50);
             this.textBoxSearch.Name = "textBoxSearch";
             this.textBoxSearch.Size = new System.Drawing.Size(372, 29);
             this.textBoxSearch.TabIndex = 5;
@@ -89,21 +90,12 @@ namespace CNSC_Supply_and_Equipment_Management.Transactions
             this.groupBox1.Controls.Add(this.comboBoxDate);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.comboBoxOffices);
-            this.groupBox1.Location = new System.Drawing.Point(502, 85);
+            this.groupBox1.Location = new System.Drawing.Point(516, 85);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(372, 78);
             this.groupBox1.TabIndex = 8;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Filter By";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(16, 20);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(35, 13);
-            this.label1.TabIndex = 8;
-            this.label1.Text = "Office";
             // 
             // label3
             // 
@@ -126,11 +118,20 @@ namespace CNSC_Supply_and_Equipment_Management.Transactions
             this.comboBoxDate.TabIndex = 9;
             this.comboBoxDate.SelectedIndexChanged += new System.EventHandler(this.comboBoxDate_SelectedIndexChanged);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(16, 20);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(35, 13);
+            this.label1.TabIndex = 8;
+            this.label1.Text = "Office";
+            // 
             // ViewPendingRequestsTransactionForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(886, 587);
+            this.ClientSize = new System.Drawing.Size(900, 651);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.textBoxSearch);
             this.Controls.Add(this.label2);

@@ -17,6 +17,8 @@ namespace CNSC_Supply_and_Equipment_Management.Transactions
         public ViewPendingRequestsTransactionForm()
         {
             InitializeComponent();
+            this.StartPosition = FormStartPosition.CenterScreen;
+            flowLayoutPanelRequests.WrapContents = false;
         }
 
         private void ViewPendingRequestsTransactionForm_Load(object sender, EventArgs e)
@@ -55,11 +57,11 @@ namespace CNSC_Supply_and_Equipment_Management.Transactions
             {
                 if (selectedDate == "Oldest")
                 {
-                    query += " ORDER BY r.submitted_date ASC";
+                    query += " ORDER BY submitted_date ASC";
                 }
                 else if (selectedDate == "Latest")
                 {
-                    query += " ORDER BY r.submitted_date DESC";
+                    query += " ORDER BY submitted_date DESC";
                 }
             }
 
@@ -70,7 +72,7 @@ namespace CNSC_Supply_and_Equipment_Management.Transactions
                 LoadPendingRequestControl(requestRow);
             }
         }
-
+       
         private void LoadPendingRequestControl(DataRow requestRow)
         {
             
@@ -98,6 +100,10 @@ namespace CNSC_Supply_and_Equipment_Management.Transactions
             custodianControl.SetOfficeName(officeName);
             custodianControl.SetOfficeAcronymName(officeAcronym);
             custodianControl.SetSubmittedDate(submittedDate);
+
+            string r = requestRow["request_id"].ToString();
+
+            custodianControl.SetRequestId(r);
 
             flowLayoutPanelRequests.FlowDirection = FlowDirection.TopDown;
             flowLayoutPanelRequests.Controls.Add(custodianControl);
@@ -158,5 +164,7 @@ namespace CNSC_Supply_and_Equipment_Management.Transactions
             flowLayoutPanelRequests.Controls.Clear();
             LoadPendingRequests();
         }
+
+       
     }
 }
