@@ -1,7 +1,7 @@
 ﻿
-namespace CNSC_Supply_and_Equipment_Management.Transactions
+namespace CNSC_Supply_and_Equipment_Management
 {
-    partial class ReleasePARForm
+    partial class PARForm
     {
         /// <summary>
         /// Required designer variable.
@@ -38,15 +38,8 @@ namespace CNSC_Supply_and_Equipment_Management.Transactions
             this.textBoxOffice = new System.Windows.Forms.TextBox();
             this.textBoxCustodian = new System.Windows.Forms.TextBox();
             this.dataGridViewDetails = new System.Windows.Forms.DataGridView();
-            this.quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.unit = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.description = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.property_number = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.amount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.buttonConfirm = new System.Windows.Forms.Button();
-            this.buttonCancel = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -63,7 +56,7 @@ namespace CNSC_Supply_and_Equipment_Management.Transactions
             this.panel1.Location = new System.Drawing.Point(12, 12);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(776, 798);
-            this.panel1.TabIndex = 0;
+            this.panel1.TabIndex = 1;
             // 
             // groupBox2
             // 
@@ -147,41 +140,10 @@ namespace CNSC_Supply_and_Equipment_Management.Transactions
             this.dataGridViewDetails.AllowUserToDeleteRows = false;
             this.dataGridViewDetails.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridViewDetails.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewDetails.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.quantity,
-            this.unit,
-            this.description,
-            this.property_number,
-            this.amount});
             this.dataGridViewDetails.Location = new System.Drawing.Point(26, 92);
             this.dataGridViewDetails.Name = "dataGridViewDetails";
             this.dataGridViewDetails.Size = new System.Drawing.Size(719, 558);
             this.dataGridViewDetails.TabIndex = 4;
-            // 
-            // quantity
-            // 
-            this.quantity.HeaderText = "Quantity";
-            this.quantity.Name = "quantity";
-            // 
-            // unit
-            // 
-            this.unit.HeaderText = "Unit";
-            this.unit.Name = "unit";
-            // 
-            // description
-            // 
-            this.description.HeaderText = "Description";
-            this.description.Name = "description";
-            // 
-            // property_number
-            // 
-            this.property_number.HeaderText = "Property Number";
-            this.property_number.Name = "property_number";
-            // 
-            // amount
-            // 
-            this.amount.HeaderText = "Amount";
-            this.amount.Name = "amount";
             // 
             // label2
             // 
@@ -203,38 +165,15 @@ namespace CNSC_Supply_and_Equipment_Management.Transactions
             this.label1.TabIndex = 2;
             this.label1.Text = "PROPERTY ACKNOWLEDGMENT RECEIPT";
             // 
-            // buttonConfirm
-            // 
-            this.buttonConfirm.Location = new System.Drawing.Point(12, 816);
-            this.buttonConfirm.Name = "buttonConfirm";
-            this.buttonConfirm.Size = new System.Drawing.Size(473, 57);
-            this.buttonConfirm.TabIndex = 1;
-            this.buttonConfirm.Text = "Confirm";
-            this.buttonConfirm.UseVisualStyleBackColor = true;
-            this.buttonConfirm.Click += new System.EventHandler(this.buttonConfirm_Click);
-            // 
-            // buttonCancel
-            // 
-            this.buttonCancel.Location = new System.Drawing.Point(491, 816);
-            this.buttonCancel.Name = "buttonCancel";
-            this.buttonCancel.Size = new System.Drawing.Size(297, 57);
-            this.buttonCancel.TabIndex = 2;
-            this.buttonCancel.Text = "Cancel";
-            this.buttonCancel.UseVisualStyleBackColor = true;
-            this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
-            // 
-            // ReleasePARForm
+            // PARForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 876);
-            this.Controls.Add(this.buttonCancel);
-            this.Controls.Add(this.buttonConfirm);
+            this.ClientSize = new System.Drawing.Size(802, 824);
             this.Controls.Add(this.panel1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Name = "ReleasePARForm";
-            this.Text = "ReleasePARForm";
-            this.Load += new System.EventHandler(this.ReleasePARForm_Load);
+            this.Name = "PARForm";
+            this.Text = "PARForm";
+            this.Load += new System.EventHandler(this.PARForm_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
@@ -249,22 +188,15 @@ namespace CNSC_Supply_and_Equipment_Management.Transactions
         #endregion
 
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.DataGridView dataGridViewDetails;
-        private System.Windows.Forms.Button buttonConfirm;
-        private System.Windows.Forms.Button buttonCancel;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.TextBox textBoxIssuedDate;
         private System.Windows.Forms.TextBox textBoxAdminName;
         private System.Windows.Forms.TextBox textBoxPosition;
+        private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.TextBox textBoxOffice;
         private System.Windows.Forms.TextBox textBoxCustodian;
-        private System.Windows.Forms.DataGridViewTextBoxColumn quantity;
-        private System.Windows.Forms.DataGridViewTextBoxColumn unit;
-        private System.Windows.Forms.DataGridViewTextBoxColumn description;
-        private System.Windows.Forms.DataGridViewTextBoxColumn property_number;
-        private System.Windows.Forms.DataGridViewTextBoxColumn amount;
+        private System.Windows.Forms.DataGridView dataGridViewDetails;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label1;
     }
 }

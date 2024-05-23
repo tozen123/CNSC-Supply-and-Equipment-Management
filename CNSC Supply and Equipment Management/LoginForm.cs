@@ -104,5 +104,12 @@ namespace CNSC_Supply_and_Equipment_Management
             string password = "123";
             Login(email, password);
         }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            string email = "ifms@gmail.com";
+            string password = "123";
+            Login(email, password);
+        }
     }
 }

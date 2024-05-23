@@ -12,12 +12,17 @@ namespace CNSC_Supply_and_Equipment_Management.Transactions
 {
     public partial class ReleaseICSForm : Form
     {
+        string id;
         DataGridView data;
         public ReleaseICSForm()
         {
             InitializeComponent();
         }
 
+        public void SetRequestId(string _id)
+        {
+            id = _id;
+        }
         public void SetData(DataGridView _data)
         {
             data = _data;

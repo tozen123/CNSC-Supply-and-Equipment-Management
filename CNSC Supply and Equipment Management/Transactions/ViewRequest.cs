@@ -161,14 +161,19 @@ namespace CNSC_Supply_and_Equipment_Management.Transactions
                 var result = form.ShowDialog();
                 if (result == DialogResult.OK)
                 {
-                    /*
-                    SetStatusRequest(1);
+                    string type = form.ChosenType();
+
+                    if(type == "PAR")
+                    {
+                        ReleasePAR();
+                    }
+                    SetStatusRequest(1, type);
+                    
                     UpdateItemQuantity();
 
                     MessageBox.Show("Request Approved Sucessfully");
                     this.DialogResult = DialogResult.OK;
                     this.Close();
-                    */
                 }
                 else
                 {
@@ -178,7 +183,23 @@ namespace CNSC_Supply_and_Equipment_Management.Transactions
             }
             
         }
+        private void ReleasePAR()
+        {
+            string query = "SELECT custodian_id FROM request WHERE request_id = @RequestId";
+            var parameters = new Dictionary<string, object> { { "@RequestId", id } };
+            DataTable table = databaseConnection.ExecuteQuery(query, parameters);
 
+            int cur_id = Convert.ToInt32(Main.currentUser.Id);
+            int custodian_id = Convert.ToInt32(table.Rows[0]["custodian_id"]);
+
+            var data = new Dictionary<string, object>
+            {
+                { "request_id",  id},
+                { "admin_id", cur_id },
+                { "custodian_id", custodian_id }
+            };
+            databaseConnection.InsertData("par", data);
+        }
         private void buttonDisapprove_Click(object sender, EventArgs e)
         {
             MessageBox.Show("Request Disapproved Sucessfully");
@@ -187,14 +208,15 @@ namespace CNSC_Supply_and_Equipment_Management.Transactions
 
         }
 
-        private void SetStatusRequest(int isApprove)
+        private void SetStatusRequest(int isApprove, string type = "Did Not Release")
         {
             string rmrk = richTextBox1.Text;
             var data = new Dictionary<string, object>
             {
                 { "request_id", id },
                 { "isApprove", 1 },
-                { "remarks", rmrk }
+                { "remarks", rmrk },
+                { "releasedType", type }
             };
             databaseConnection.InsertData("request_status", data);
 

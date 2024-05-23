@@ -14,6 +14,7 @@ namespace CNSC_Supply_and_Equipment_Management.Transactions
     {
         DataGridView data;
         string id;
+        string type;
         public ChoosingReleasingForm()
         {
             InitializeComponent();
@@ -23,10 +24,15 @@ namespace CNSC_Supply_and_Equipment_Management.Transactions
         {
             data = datagrid;
         }
+
         private void buttonICS_Click(object sender, EventArgs e)
         {
-            using (ReleaseICSForm form = new ReleaseICSForm(data))
+            type = "ICS";
+            using (ReleaseICSForm form = new ReleaseICSForm())
             {
+                form.SetData(data);
+                form.SetRequestId(id);
+
                 var result = form.ShowDialog();
                 if (result == DialogResult.OK)
                 {
@@ -45,8 +51,10 @@ namespace CNSC_Supply_and_Equipment_Management.Transactions
         }
         private void buttonPAR_Click(object sender, EventArgs e)
         {
-            using (ReleasePARForm form = new ReleasePARForm(data))
+            type = "PAR";
+            using (ReleasePARForm form = new ReleasePARForm())
             {
+                form.SetData(data);
                 form.SetRequestId(id);
 
                 var result = form.ShowDialog();
@@ -55,11 +63,16 @@ namespace CNSC_Supply_and_Equipment_Management.Transactions
                     this.DialogResult = DialogResult.OK;
                     this.Close();
                 }
-                else
+                else if (result == DialogResult.Cancel)
                 {
                     this.Close();
                 }
             }
+        }
+
+        public string ChosenType()
+        {
+            return type;
         }
     }
 }

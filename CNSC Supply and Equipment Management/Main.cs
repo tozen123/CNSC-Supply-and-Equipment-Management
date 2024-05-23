@@ -175,7 +175,7 @@ namespace CNSC_Supply_and_Equipment_Management
 
         private void approvedRequestToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            new ViewRequestRecord().Show();
         }
 
         private void disapprovedRequestsToolStripMenuItem_Click(object sender, EventArgs e)
