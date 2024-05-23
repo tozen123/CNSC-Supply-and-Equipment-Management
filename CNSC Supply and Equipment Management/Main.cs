@@ -162,5 +162,25 @@ namespace CNSC_Supply_and_Equipment_Management
         {
             new Transactions.ViewPendingRequestsTransactionForm().Show();
         }
+
+        private void requestsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            new RequestMasterTableForm().Show();
+        }
+
+        private void pendingRequestToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void approvedRequestToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void disapprovedRequestsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

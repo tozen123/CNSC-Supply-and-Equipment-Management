@@ -26,31 +26,45 @@ namespace CNSC_Supply_and_Equipment_Management.Transactions
             LoadOfficesIntoComboBox();
             LoadPendingRequests();
         }
-
+        public void Reload()
+        {
+            flowLayoutPanelRequests.Controls.Clear();
+            LoadPendingRequests();
+        }
         private void LoadPendingRequests()
         {
             string selectedOffice = comboBoxOffices.SelectedItem?.ToString();
             string selectedDate = comboBoxDate.SelectedItem?.ToString();
 
-            string query = "SELECT request_id, custodian_id, submitted_date FROM request GROUP BY request_id";
+            string query = @"
+                    SELECT r.request_id, r.custodian_id, r.submitted_date
+                    FROM request r
+                    LEFT JOIN request_status rs ON r.request_id = rs.request_id
+                    WHERE rs.request_id IS NULL
+                    GROUP BY r.request_id";
 
             if (!string.IsNullOrEmpty(selectedOffice))
             {
-                if(selectedOffice == "All")
+                if (selectedOffice == "All")
                 {
-                    query = "SELECT request_id, custodian_id, submitted_date  FROM request GROUP BY request_id";
+                    query = @"
+                SELECT r.request_id, r.custodian_id, r.submitted_date
+                FROM request r
+                LEFT JOIN request_status rs ON r.request_id = rs.request_id
+                WHERE rs.request_id IS NULL
+                GROUP BY r.request_id";
                 }
                 else
                 {
                     query = $@"
-                    SELECT r.request_id, r.custodian_id, r.submitted_date
-                    FROM request r
-                    JOIN custodian c ON r.custodian_id = c.id
-                    JOIN office o ON c.office_id = o.id
-                    WHERE o.name = '{selectedOffice}'
-                    GROUP BY r.request_id";
+                SELECT r.request_id, r.custodian_id, r.submitted_date
+                FROM request r
+                JOIN custodian c ON r.custodian_id = c.id
+                JOIN office o ON c.office_id = o.id
+                LEFT JOIN request_status rs ON r.request_id = rs.request_id
+                WHERE o.name = '{selectedOffice}' AND rs.request_id IS NULL
+                GROUP BY r.request_id";
                 }
-                
             }
 
             else if (!string.IsNullOrEmpty(selectedDate))
@@ -95,7 +109,7 @@ namespace CNSC_Supply_and_Equipment_Management.Transactions
 
             DateTime submittedDate = Convert.ToDateTime(requestRow["submitted_date"]);
 
-            PendingRequestControlBox custodianControl = new PendingRequestControlBox();
+            PendingRequestControlBox custodianControl = new PendingRequestControlBox(this);
             custodianControl.SetCustodianName(custodianName);
             custodianControl.SetOfficeName(officeName);
             custodianControl.SetOfficeAcronymName(officeAcronym);

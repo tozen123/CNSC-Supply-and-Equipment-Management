@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CNSC_Supply_and_Equipment_Management.Transactions;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -18,10 +19,11 @@ namespace CNSC_Supply_and_Equipment_Management
         DateTime reqsubmittedate;
 
         string request_id;
-
-        public PendingRequestControlBox()
+        ViewPendingRequestsTransactionForm pForm;
+        public PendingRequestControlBox(ViewPendingRequestsTransactionForm parentForm)
         {
             InitializeComponent();
+            pForm = parentForm;
         }
 
         private void PendingRequestControlBox_Load(object sender, EventArgs e)
@@ -59,7 +61,17 @@ namespace CNSC_Supply_and_Equipment_Management
 
         private void buttonView_Click(object sender, EventArgs e)
         {
-
+            using (Transactions.ViewRequest form = new Transactions.ViewRequest())
+            {
+                form.SetRequestId(request_id);
+                var result = form.ShowDialog();
+               
+                if (result == DialogResult.OK)
+                {
+                    pForm.Reload();
+                }
+                pForm.Reload();
+            }
         }
     }
 }

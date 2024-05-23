@@ -73,6 +73,12 @@
     <Compile Include="PendingRequestControlBox.Designer.cs">
       <DependentUpon>PendingRequestControlBox.cs</DependentUpon>
     </Compile>
+    <Compile Include="Transactions\ChoosingReleasingForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Transactions\ChoosingReleasingForm.Designer.cs">
+      <DependentUpon>ChoosingReleasingForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Transactions\FinalRequestProcessSlipForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -122,6 +128,18 @@
     <Compile Include="LoginForm.Designer.cs">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Transactions\ReleaseICSForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Transactions\ReleaseICSForm.Designer.cs">
+      <DependentUpon>ReleaseICSForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Transactions\ReleasePARForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Transactions\ReleasePARForm.Designer.cs">
+      <DependentUpon>ReleasePARForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Transactions\RequestForms\RequestSupplyEquipmentForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -149,6 +167,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RequestMasterTableForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RequestMasterTableForm.Designer.cs">
+      <DependentUpon>RequestMasterTableForm.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="CreateAccountForm.resx">
       <DependentUpon>CreateAccountForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -163,6 +187,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="PendingRequestControlBox.resx">
       <DependentUpon>PendingRequestControlBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Transactions\ChoosingReleasingForm.resx">
+      <DependentUpon>ChoosingReleasingForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Transactions\FinalRequestProcessSlipForm.resx">
       <DependentUpon>FinalRequestProcessSlipForm.cs</DependentUpon>
@@ -197,11 +224,20 @@
     <EmbeddedResource Include="Transactions\CreateTransactionRequest.resx">
       <DependentUpon>CreateTransactionRequest.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Transactions\ReleasePARForm.resx">
+      <DependentUpon>ReleasePARForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Transactions\RequestForms\RequestSupplyEquipmentForm.resx">
       <DependentUpon>RequestSupplyEquipmentForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Transactions\ViewPendingRequestsTransactionForm.resx">
       <DependentUpon>ViewPendingRequestsTransactionForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Transactions\ViewRequest.resx">
+      <DependentUpon>ViewRequest.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RequestMasterTableForm.resx">
+      <DependentUpon>RequestMasterTableForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

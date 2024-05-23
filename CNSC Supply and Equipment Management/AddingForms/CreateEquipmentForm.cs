@@ -22,17 +22,23 @@ namespace CNSC_Supply_and_Equipment_Management
         private void buttonAddNewSupply_Click(object sender, EventArgs e)
         {
             string desc = textBoxEDescription.Text;
+            
             string pnum = textBoxEPNumber.Text;
             string pquan = textBoxEQuantity.Text;
 
             string qty = comboBoxUnit.SelectedItem.ToString();
+
+            string name = textBoxName.Text;
+            string unit = textBoxUnitCosts.Text;
 
             var data = new Dictionary<string, object>
             {
                 { "unit", qty },
                 { "quantity", pquan },
                 { "description", desc },
-                { "property_number", pnum }
+                { "property_number", pnum },
+                { "unit_cost", unit },
+                { "name", name }
             };
 
             databaseConnection.InsertData("equipment", data);

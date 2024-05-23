@@ -73,5 +73,11 @@ namespace CNSC_Supply_and_Equipment_Management
                 }
             }
         }
+        public void UpdateData(string tableName, string setClause, string condition, Dictionary<string, object> parameters)
+        {
+            string query = $"UPDATE {tableName} SET {setClause} WHERE {condition} ";
+            var sParams = parameters.Select(d => new MySqlParameter(d.Key, d.Value)).ToArray();
+            ExecuteNonQuery(query, sParams);
+        }
     }
 }
