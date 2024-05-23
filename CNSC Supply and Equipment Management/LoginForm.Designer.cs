@@ -120,31 +120,31 @@ namespace CNSC_Supply_and_Equipment_Management
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(189, 59);
+            this.button1.Location = new System.Drawing.Point(61, 50);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(85, 70);
+            this.button1.Size = new System.Drawing.Size(163, 70);
             this.button1.TabIndex = 11;
-            this.button1.Text = "fast test login admin jake";
+            this.button1.Text = "TEST LOGIN | ADMIN | JAKE";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(302, 59);
+            this.button2.Location = new System.Drawing.Point(230, 50);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(73, 70);
+            this.button2.Size = new System.Drawing.Size(163, 70);
             this.button2.TabIndex = 12;
-            this.button2.Text = "fast test login custodian ics";
+            this.button2.Text = "TEST LOGIN | CUSTODIAN | ICS";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(413, 69);
+            this.button3.Location = new System.Drawing.Point(399, 50);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(73, 70);
+            this.button3.Size = new System.Drawing.Size(163, 70);
             this.button3.TabIndex = 13;
-            this.button3.Text = "fast test login custodian ifms\r\n";
+            this.button3.Text = "TEST LOGIN | CUSTODIAN | IFMS";
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 

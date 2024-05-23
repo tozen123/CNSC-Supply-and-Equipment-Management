@@ -67,6 +67,12 @@
     <Compile Include="AddingForms\CreateSupplyForm.Designer.cs">
       <DependentUpon>CreateSupplyForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="CustodianItemSupplyEquipmentRecordsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CustodianItemSupplyEquipmentRecordsForm.Designer.cs">
+      <DependentUpon>CustodianItemSupplyEquipmentRecordsForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="PARForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -78,6 +84,12 @@
     </Compile>
     <Compile Include="PendingRequestControlBox.Designer.cs">
       <DependentUpon>PendingRequestControlBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PendingRequestRecord.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PendingRequestRecord.Designer.cs">
+      <DependentUpon>PendingRequestRecord.cs</DependentUpon>
     </Compile>
     <Compile Include="Transactions\ChoosingReleasingForm.cs">
       <SubType>Form</SubType>
@@ -202,6 +214,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="PendingRequestControlBox.resx">
       <DependentUpon>PendingRequestControlBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PendingRequestRecord.resx">
+      <DependentUpon>PendingRequestRecord.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Transactions\ChoosingReleasingForm.resx">
       <DependentUpon>ChoosingReleasingForm.cs</DependentUpon>

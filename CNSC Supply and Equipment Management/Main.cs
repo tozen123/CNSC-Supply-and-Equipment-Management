@@ -170,7 +170,7 @@ namespace CNSC_Supply_and_Equipment_Management
 
         private void pendingRequestToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            new PendingRequestRecord().Show();
         }
 
         private void approvedRequestToolStripMenuItem_Click(object sender, EventArgs e)
@@ -181,6 +181,16 @@ namespace CNSC_Supply_and_Equipment_Management
         private void disapprovedRequestsToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void recordsToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            new CustodianItemSupplyEquipmentRecordsForm().Show();
+        }
+
+        private void equipmentToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            new CustodianItemSupplyEquipmentRecordsForm().Show();
         }
     }
 }

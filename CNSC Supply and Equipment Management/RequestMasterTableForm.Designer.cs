@@ -53,11 +53,13 @@ namespace CNSC_Supply_and_Equipment_Management
             this.textBoxSearch.Name = "textBoxSearch";
             this.textBoxSearch.Size = new System.Drawing.Size(550, 27);
             this.textBoxSearch.TabIndex = 10;
+            this.textBoxSearch.TextChanged += new System.EventHandler(this.textBoxSearch_TextChanged);
             // 
             // dataGridViewAllRequest
             // 
             this.dataGridViewAllRequest.AllowUserToAddRows = false;
             this.dataGridViewAllRequest.AllowUserToDeleteRows = false;
+            this.dataGridViewAllRequest.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridViewAllRequest.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewAllRequest.Location = new System.Drawing.Point(17, 53);
             this.dataGridViewAllRequest.Name = "dataGridViewAllRequest";
@@ -75,6 +77,7 @@ namespace CNSC_Supply_and_Equipment_Management
             this.Controls.Add(this.labelMain);
             this.Name = "RequestMasterTableForm";
             this.Text = "RequestMasterTableForm";
+            this.Load += new System.EventHandler(this.RequestMasterTableForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewAllRequest)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

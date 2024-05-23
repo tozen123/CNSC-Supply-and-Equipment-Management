@@ -41,16 +41,16 @@ namespace CNSC_Supply_and_Equipment_Management
             this.supplyToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.equipmentsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.departmentsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.requestsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.officeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.recordsToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.equipmentToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.approvedRequestToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.disapprovedRequestsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.pendingRequestToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.labelName = new System.Windows.Forms.Label();
             this.labelTypeUser = new System.Windows.Forms.Label();
             this.tabControlOfficesRecord = new System.Windows.Forms.TabControl();
-            this.requestsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.pendingRequestToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -137,23 +137,30 @@ namespace CNSC_Supply_and_Equipment_Management
             // supplyToolStripMenuItem1
             // 
             this.supplyToolStripMenuItem1.Name = "supplyToolStripMenuItem1";
-            this.supplyToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.supplyToolStripMenuItem1.Size = new System.Drawing.Size(137, 22);
             this.supplyToolStripMenuItem1.Text = "Supply";
             this.supplyToolStripMenuItem1.Click += new System.EventHandler(this.supplyToolStripMenuItem1_Click);
             // 
             // equipmentsToolStripMenuItem
             // 
             this.equipmentsToolStripMenuItem.Name = "equipmentsToolStripMenuItem";
-            this.equipmentsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.equipmentsToolStripMenuItem.Size = new System.Drawing.Size(137, 22);
             this.equipmentsToolStripMenuItem.Text = "Equipments";
             this.equipmentsToolStripMenuItem.Click += new System.EventHandler(this.equipmentsToolStripMenuItem_Click);
             // 
             // departmentsToolStripMenuItem
             // 
             this.departmentsToolStripMenuItem.Name = "departmentsToolStripMenuItem";
-            this.departmentsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.departmentsToolStripMenuItem.Size = new System.Drawing.Size(137, 22);
             this.departmentsToolStripMenuItem.Text = "Offices";
             this.departmentsToolStripMenuItem.Click += new System.EventHandler(this.departmentsToolStripMenuItem_Click);
+            // 
+            // requestsToolStripMenuItem
+            // 
+            this.requestsToolStripMenuItem.Name = "requestsToolStripMenuItem";
+            this.requestsToolStripMenuItem.Size = new System.Drawing.Size(137, 22);
+            this.requestsToolStripMenuItem.Text = "Requests";
+            this.requestsToolStripMenuItem.Click += new System.EventHandler(this.requestsToolStripMenuItem_Click);
             // 
             // officeToolStripMenuItem
             // 
@@ -172,12 +179,14 @@ namespace CNSC_Supply_and_Equipment_Management
             this.recordsToolStripMenuItem1.Name = "recordsToolStripMenuItem1";
             this.recordsToolStripMenuItem1.Size = new System.Drawing.Size(190, 22);
             this.recordsToolStripMenuItem1.Text = "Supply";
+            this.recordsToolStripMenuItem1.Click += new System.EventHandler(this.recordsToolStripMenuItem1_Click);
             // 
             // equipmentToolStripMenuItem1
             // 
             this.equipmentToolStripMenuItem1.Name = "equipmentToolStripMenuItem1";
             this.equipmentToolStripMenuItem1.Size = new System.Drawing.Size(190, 22);
             this.equipmentToolStripMenuItem1.Text = "Equipment";
+            this.equipmentToolStripMenuItem1.Click += new System.EventHandler(this.equipmentToolStripMenuItem1_Click);
             // 
             // approvedRequestToolStripMenuItem
             // 
@@ -192,6 +201,13 @@ namespace CNSC_Supply_and_Equipment_Management
             this.disapprovedRequestsToolStripMenuItem.Size = new System.Drawing.Size(190, 22);
             this.disapprovedRequestsToolStripMenuItem.Text = "Disapproved Requests";
             this.disapprovedRequestsToolStripMenuItem.Click += new System.EventHandler(this.disapprovedRequestsToolStripMenuItem_Click);
+            // 
+            // pendingRequestToolStripMenuItem
+            // 
+            this.pendingRequestToolStripMenuItem.Name = "pendingRequestToolStripMenuItem";
+            this.pendingRequestToolStripMenuItem.Size = new System.Drawing.Size(190, 22);
+            this.pendingRequestToolStripMenuItem.Text = "Pending Request";
+            this.pendingRequestToolStripMenuItem.Click += new System.EventHandler(this.pendingRequestToolStripMenuItem_Click);
             // 
             // labelName
             // 
@@ -223,20 +239,6 @@ namespace CNSC_Supply_and_Equipment_Management
             this.tabControlOfficesRecord.SelectedIndex = 0;
             this.tabControlOfficesRecord.Size = new System.Drawing.Size(981, 547);
             this.tabControlOfficesRecord.TabIndex = 8;
-            // 
-            // requestsToolStripMenuItem
-            // 
-            this.requestsToolStripMenuItem.Name = "requestsToolStripMenuItem";
-            this.requestsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.requestsToolStripMenuItem.Text = "Requests";
-            this.requestsToolStripMenuItem.Click += new System.EventHandler(this.requestsToolStripMenuItem_Click);
-            // 
-            // pendingRequestToolStripMenuItem
-            // 
-            this.pendingRequestToolStripMenuItem.Name = "pendingRequestToolStripMenuItem";
-            this.pendingRequestToolStripMenuItem.Size = new System.Drawing.Size(190, 22);
-            this.pendingRequestToolStripMenuItem.Text = "Pending Request";
-            this.pendingRequestToolStripMenuItem.Click += new System.EventHandler(this.pendingRequestToolStripMenuItem_Click);
             // 
             // Main
             // 

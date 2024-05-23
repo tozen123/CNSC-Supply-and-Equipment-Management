@@ -36,6 +36,7 @@ namespace CNSC_Supply_and_Equipment_Management.Transactions
             dataGridViewListOfRequest.Columns.Add("unit", "Unit");
             dataGridViewListOfRequest.Columns.Add("description", "Description");
             dataGridViewListOfRequest.Columns.Add("quantity", "Quantity");
+            dataGridViewListOfRequest.Columns.Add("unit_cost", "Unit Cost");
             dataGridViewListOfRequest.Columns.Add("remarks", "Remarks");
             dataGridViewListOfRequest.Columns.Add("purpose", "Purpose");
             dataGridViewListOfRequest.Columns.Add("isUnique", "Is Unique");
@@ -134,9 +135,9 @@ namespace CNSC_Supply_and_Equipment_Management.Transactions
                 dataGridViewListOfRequest.Rows.Add(
                     item["item_id"],
                     item["unit"],
-                    
                     item["description"],
                     quantity,
+                    unitCost,
                     item["remarks"],
                     item["purpose"],
                     item["isUnique"]
@@ -256,7 +257,7 @@ namespace CNSC_Supply_and_Equipment_Management.Transactions
                     int currentQuantity = Convert.ToInt32(table.Rows[0]["quantity"]);
                     int newQuantity = currentQuantity - quantity;
 
-                    string setClause = "quantity = quantity - @Quantity";
+                    string setClause = "quantity = @Quantity";
                     string condition = "id = @ItemId AND description = @ItemName";
                     var _parameters = new Dictionary<string, object>
                     {
@@ -283,7 +284,7 @@ namespace CNSC_Supply_and_Equipment_Management.Transactions
                         int currentQuantity = Convert.ToInt32(e_table.Rows[0]["quantity"]);
                         int newQuantity = currentQuantity - quantity;
 
-                        string setClause = "quantity = quantity - @Quantity";
+                        string setClause = "quantity = @Quantity";
                         string condition = "id = @ItemId AND description = @ItemName";
 
                         var _parameters = new Dictionary<string, object>
@@ -301,49 +302,6 @@ namespace CNSC_Supply_and_Equipment_Management.Transactions
 
 
 
-                /*
-                int itemId = Convert.ToInt32(row.Cells["id"].Value);
-                string itemName = row.Cells["description"].Value.ToString().Split('|')[1].Trim();
-                int quantity = Convert.ToInt32(row.Cells["quantity"].Value);
-
-                string query = "SELECT quantity FROM supply WHERE id = @ItemId AND description = @ItemName";
-                var parameters = new Dictionary<string, object>
-                {
-                    { "@ItemId", itemId },
-                    { "@ItemName", itemName }
-                };
-                DataTable table = databaseConnection.ExecuteQuery(query, parameters);
-
-                if (table.Rows.Count > 0)
-                {
-                    //int currentQuantity = Convert.ToInt32(table.Rows[0]["quantity"]);
-                    //int newQuantity = currentQuantity - quantity;
-
-                    //string updateQuery = "UPDATE supply SET quantity = @NewQuantity WHERE id = @ItemId AND description = @ItemName";
-                    //var updateParameters = new Dictionary<string, object>
-                    //{
-                    //    { "@NewQuantity", newQuantity },
-                    //    { "@ItemId", itemId },
-                    //    { "@ItemName", itemName }
-                    //};
-                    //databaseConnection.UpdateData(updateQuery, updateParameters);
-
-
-                    string setClause = "quantity = quantity - @Quantity"; 
-                    string condition = "id = @ItemId AND description = @ItemName";
-                    var _parameters = new Dictionary<string, object>
-                    {
-                        { "@Quantity", quantity },
-                        { "@ItemId", itemId },
-                        { "@ItemName", itemName }
-                    };
-
-                    databaseConnection.UpdateData("supply", setClause, condition, _parameters);
-                }
-                else
-                {
-                }
-                */
             }
         }
 
