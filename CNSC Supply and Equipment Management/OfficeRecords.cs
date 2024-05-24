@@ -22,7 +22,7 @@ namespace CNSC_Supply_and_Equipment_Management
 
         private void DepartmentRecords_Load(object sender, EventArgs e)
         {
-
+            this.Icon = Icon.ExtractAssociatedIcon(Application.ExecutablePath);
             LoadOfficeData();
         }
 

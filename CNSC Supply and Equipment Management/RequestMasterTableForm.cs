@@ -21,6 +21,7 @@ namespace CNSC_Supply_and_Equipment_Management
 
         private void RequestMasterTableForm_Load(object sender, EventArgs e)
         {
+            this.Icon = Icon.ExtractAssociatedIcon(Application.ExecutablePath);
             string query = @"
                     SELECT 
                         r.request_id, 

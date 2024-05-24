@@ -51,7 +51,9 @@ namespace CNSC_Supply_and_Equipment_Management
             this.labelName = new System.Windows.Forms.Label();
             this.labelTypeUser = new System.Windows.Forms.Label();
             this.tabControlOfficesRecord = new System.Windows.Forms.TabControl();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.menuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // labelMain
@@ -240,11 +242,23 @@ namespace CNSC_Supply_and_Equipment_Management
             this.tabControlOfficesRecord.Size = new System.Drawing.Size(981, 547);
             this.tabControlOfficesRecord.TabIndex = 8;
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::CNSC_Supply_and_Equipment_Management.Properties.Resources.CNSC_LOGO;
+            this.pictureBox1.Location = new System.Drawing.Point(910, 28);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(83, 102);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 15;
+            this.pictureBox1.TabStop = false;
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.DeepSkyBlue;
             this.ClientSize = new System.Drawing.Size(1005, 695);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.tabControlOfficesRecord);
             this.Controls.Add(this.labelTypeUser);
             this.Controls.Add(this.labelName);
@@ -256,6 +270,7 @@ namespace CNSC_Supply_and_Equipment_Management
             this.Load += new System.EventHandler(this.Main_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -285,6 +300,7 @@ namespace CNSC_Supply_and_Equipment_Management
         private System.Windows.Forms.ToolStripMenuItem disapprovedRequestsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem requestsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem pendingRequestToolStripMenuItem;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }
 

@@ -30,6 +30,7 @@ namespace CNSC_Supply_and_Equipment_Management.Transactions
         }
         private void ViewRequest_Load(object sender, EventArgs e)
         {
+            this.Icon = Icon.ExtractAssociatedIcon(Application.ExecutablePath);
             Console.WriteLine(id);
 
 

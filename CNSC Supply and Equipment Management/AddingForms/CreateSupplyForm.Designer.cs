@@ -221,6 +221,7 @@ namespace CNSC_Supply_and_Equipment_Management
             this.Controls.Add(this.label2);
             this.Name = "CreateSupplyForm";
             this.Text = "CreateSupplyForm";
+            this.Load += new System.EventHandler(this.CreateSupplyForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

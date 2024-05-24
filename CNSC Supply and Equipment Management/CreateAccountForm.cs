@@ -21,6 +21,7 @@ namespace CNSC_Supply_and_Equipment_Management
 
         private void CreateAccount_Load(object sender, EventArgs e)
         {
+            this.Icon = Icon.ExtractAssociatedIcon(Application.ExecutablePath);
             groupBoxCusDept.Visible = false;
 
             LoadOfficesIntoComboBox();

@@ -88,7 +88,7 @@ namespace CNSC_Supply_and_Equipment_Management
 
         private void LoginForm_Load(object sender, EventArgs e)
         {
-
+            this.Icon = Icon.ExtractAssociatedIcon(Application.ExecutablePath);
         }
 
         private void button1_Click(object sender, EventArgs e)

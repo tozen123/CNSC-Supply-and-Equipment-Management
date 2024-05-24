@@ -21,7 +21,7 @@ namespace CNSC_Supply_and_Equipment_Management
 
         private void CreateTransactionRequest_Load(object sender, EventArgs e)
         {
-
+            this.Icon = Icon.ExtractAssociatedIcon(Application.ExecutablePath);
         }
 
         private void checkBoxSupply_CheckedChanged(object sender, EventArgs e)

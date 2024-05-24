@@ -24,6 +24,7 @@ namespace CNSC_Supply_and_Equipment_Management.Transactions
 
         private void ReleasePARForm_Load(object sender, EventArgs e)
         {
+            this.Icon = Icon.ExtractAssociatedIcon(Application.ExecutablePath);
             textBoxAdminName.Text = Main.currentUser.Name;
             LoadData();
         }

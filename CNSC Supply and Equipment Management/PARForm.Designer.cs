@@ -57,6 +57,7 @@ namespace CNSC_Supply_and_Equipment_Management
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(776, 798);
             this.panel1.TabIndex = 1;
+            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
             // groupBox2
             // 

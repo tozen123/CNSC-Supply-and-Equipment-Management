@@ -23,6 +23,7 @@ namespace CNSC_Supply_and_Equipment_Management
 
         private void ViewRequestRecord_Load(object sender, EventArgs e)
         {
+            this.Icon = Icon.ExtractAssociatedIcon(Application.ExecutablePath);
             InitializeDataGridView();
             LoadData();
         }

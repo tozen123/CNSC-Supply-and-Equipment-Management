@@ -74,6 +74,7 @@ namespace CNSC_Supply_and_Equipment_Management.Transactions
             this.Controls.Add(this.buttonICS);
             this.Name = "ChoosingReleasingForm";
             this.Text = "ChoosingReleasingForm";
+            this.Load += new System.EventHandler(this.ChoosingReleasingForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

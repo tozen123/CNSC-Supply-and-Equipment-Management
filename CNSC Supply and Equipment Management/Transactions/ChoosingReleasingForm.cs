@@ -74,5 +74,10 @@ namespace CNSC_Supply_and_Equipment_Management.Transactions
         {
             return type;
         }
+
+        private void ChoosingReleasingForm_Load(object sender, EventArgs e)
+        {
+            this.Icon = Icon.ExtractAssociatedIcon(Application.ExecutablePath);
+        }
     }
 }

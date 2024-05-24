@@ -91,5 +91,10 @@ namespace CNSC_Supply_and_Equipment_Management
             this.DialogResult = DialogResult.OK;
             this.Close();
         }
+
+        private void CreateSupplyForm_Load(object sender, EventArgs e)
+        {
+            this.Icon = Icon.ExtractAssociatedIcon(Application.ExecutablePath);
+        }
     }
 }

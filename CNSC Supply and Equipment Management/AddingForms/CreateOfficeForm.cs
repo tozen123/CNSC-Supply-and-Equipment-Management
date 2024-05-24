@@ -54,5 +54,10 @@ namespace CNSC_Supply_and_Equipment_Management
                 MessageBox.Show($"An error occurred while creating the office: {ex.Message}", "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void CreateOfficeForm_Load(object sender, EventArgs e)
+        {
+            this.Icon = Icon.ExtractAssociatedIcon(Application.ExecutablePath);
+        }
     }
 }

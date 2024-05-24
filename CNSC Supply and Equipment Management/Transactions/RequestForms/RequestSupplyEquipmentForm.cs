@@ -20,6 +20,7 @@ namespace CNSC_Supply_and_Equipment_Management.Transactions.RequestForms
 
         private void RequestSupplyForm_Load(object sender, EventArgs e)
         {
+            this.Icon = Icon.ExtractAssociatedIcon(Application.ExecutablePath);
             LoadSupplyData();
             LoadEquipmentData();
         }

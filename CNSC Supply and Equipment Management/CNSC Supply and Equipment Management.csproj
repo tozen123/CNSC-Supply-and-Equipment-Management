@@ -12,6 +12,21 @@
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -31,6 +46,9 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>CNSC LOGO.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="MySql.Data">
@@ -209,6 +227,9 @@
     <EmbeddedResource Include="AddingForms\CreateSupplyForm.resx">
       <DependentUpon>CreateSupplyForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="CustodianItemSupplyEquipmentRecordsForm.resx">
+      <DependentUpon>CustodianItemSupplyEquipmentRecordsForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="PARForm.resx">
       <DependentUpon>PARForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -244,6 +265,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="Tools\AddUniqueSupplyItemRequest.resx">
       <DependentUpon>AddUniqueSupplyItemRequest.cs</DependentUpon>
@@ -253,6 +275,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Transactions\CreateTransactionRequest.resx">
       <DependentUpon>CreateTransactionRequest.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Transactions\ReleaseICSForm.resx">
+      <DependentUpon>ReleaseICSForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Transactions\ReleasePARForm.resx">
       <DependentUpon>ReleasePARForm.cs</DependentUpon>
@@ -287,6 +312,24 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="CNSC LOGO.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="CNSC LOGO.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.7.2 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

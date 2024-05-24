@@ -36,7 +36,7 @@ namespace CNSC_Supply_and_Equipment_Management
 
         private void FinalRequestProcessSlipForm_Load(object sender, EventArgs e)
         {
-            
+            this.Icon = Icon.ExtractAssociatedIcon(Application.ExecutablePath);
         }
 
         public void LoadCheckoutData(List<Dictionary<string, object>> data)

@@ -22,7 +22,7 @@ namespace CNSC_Supply_and_Equipment_Management.Tools
       
         private void InputNumberForm_Load(object sender, EventArgs e)
         {
-
+            this.Icon = Icon.ExtractAssociatedIcon(Application.ExecutablePath);
         }
 
         private void buttonConfirm_Click(object sender, EventArgs e)

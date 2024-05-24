@@ -25,6 +25,7 @@ namespace CNSC_Supply_and_Equipment_Management
 
         private void Main_Load(object sender, EventArgs e)
         {
+            this.Icon = Icon.ExtractAssociatedIcon(Application.ExecutablePath);
             using (LoginForm loginForm = new LoginForm())
             {
                 var result = loginForm.ShowDialog();

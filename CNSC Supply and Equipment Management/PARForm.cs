@@ -31,6 +31,7 @@ namespace CNSC_Supply_and_Equipment_Management
 
         private void LoadData()
         {
+            this.Icon = Icon.ExtractAssociatedIcon(Application.ExecutablePath);
             string query = @"
                 SELECT 
                     r.quantity, 
@@ -168,6 +169,11 @@ namespace CNSC_Supply_and_Equipment_Management
         private void PopulateDataGridView(DataTable dataTable)
         {
             dataGridViewDetails.DataSource = dataTable;
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }
