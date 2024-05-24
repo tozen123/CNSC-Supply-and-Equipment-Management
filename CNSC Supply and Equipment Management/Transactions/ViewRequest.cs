@@ -145,7 +145,7 @@ namespace CNSC_Supply_and_Equipment_Management.Transactions
                 );
             }
 
-            textBoxTotalCost.Text = totalCost.ToString(); 
+            textBoxTotalCost.Text = totalCost.ToString();
         }
 
 
@@ -156,7 +156,7 @@ namespace CNSC_Supply_and_Equipment_Management.Transactions
 
         private void buttonApprove_Click(object sender, EventArgs e)
         {
-            using(ChoosingReleasingForm form = new ChoosingReleasingForm())
+            using (ChoosingReleasingForm form = new ChoosingReleasingForm())
             {
                 form.SetRequestId(id);
                 form.SetData(dataGridViewListOfRequest);
@@ -165,12 +165,22 @@ namespace CNSC_Supply_and_Equipment_Management.Transactions
                 {
                     string type = form.ChosenType();
 
-                    if(type == "PAR")
+                    //Return Check of the ReleasingForm that is chosen by the ADMIN
+                    Console.WriteLine("Returned With = " + type);
+
+                    if (type == "PAR")
                     {
-                        ReleasePAR();
+                        //ReleasePAR();
+                        // When there is unique, create new item from that to EQUIPMENT
                     }
-                    SetStatusRequest(1, type);
-                    
+                    else if (type == "ICS")
+                    {
+                        //ReleaseICS();
+                        // When there is unique, create new item from that to SUPPLY
+                    }
+
+                    //SetStatusRequest(1, type);
+
                     UpdateItemQuantity();
 
                     MessageBox.Show("Request Approved Sucessfully");
@@ -183,10 +193,16 @@ namespace CNSC_Supply_and_Equipment_Management.Transactions
                     this.Close();
                 }
             }
-            
+
         }
+        private void ReleaseICS()
+        {
+
+        }
+
         private void ReleasePAR()
         {
+            
             string query = "SELECT custodian_id FROM request WHERE request_id = @RequestId";
             var parameters = new Dictionary<string, object> { { "@RequestId", id } };
             DataTable table = databaseConnection.ExecuteQuery(query, parameters);
@@ -200,8 +216,10 @@ namespace CNSC_Supply_and_Equipment_Management.Transactions
                 { "admin_id", cur_id },
                 { "custodian_id", custodian_id }
             };
+
             databaseConnection.InsertData("par", data);
         }
+
         private void buttonDisapprove_Click(object sender, EventArgs e)
         {
             MessageBox.Show("Request Disapproved Sucessfully");
