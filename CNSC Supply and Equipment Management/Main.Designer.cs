@@ -52,6 +52,7 @@ namespace CNSC_Supply_and_Equipment_Management
             this.labelTypeUser = new System.Windows.Forms.Label();
             this.tabControlOfficesRecord = new System.Windows.Forms.TabControl();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.buttonRefresh = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -252,12 +253,23 @@ namespace CNSC_Supply_and_Equipment_Management
             this.pictureBox1.TabIndex = 15;
             this.pictureBox1.TabStop = false;
             // 
+            // buttonRefresh
+            // 
+            this.buttonRefresh.Location = new System.Drawing.Point(806, 101);
+            this.buttonRefresh.Name = "buttonRefresh";
+            this.buttonRefresh.Size = new System.Drawing.Size(98, 29);
+            this.buttonRefresh.TabIndex = 16;
+            this.buttonRefresh.Text = "Refresh";
+            this.buttonRefresh.UseVisualStyleBackColor = true;
+            this.buttonRefresh.Click += new System.EventHandler(this.buttonRefresh_Click);
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DeepSkyBlue;
             this.ClientSize = new System.Drawing.Size(1005, 695);
+            this.Controls.Add(this.buttonRefresh);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.tabControlOfficesRecord);
             this.Controls.Add(this.labelTypeUser);
@@ -301,6 +313,7 @@ namespace CNSC_Supply_and_Equipment_Management
         private System.Windows.Forms.ToolStripMenuItem requestsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem pendingRequestToolStripMenuItem;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Button buttonRefresh;
     }
 }
 

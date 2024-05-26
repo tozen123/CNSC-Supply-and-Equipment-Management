@@ -341,6 +341,16 @@ namespace CNSC_Supply_and_Equipment_Management.Transactions
 
         private void buttonDisapprove_Click(object sender, EventArgs e)
         {
+            string rmrk = richTextBox1.Text;
+            var data = new Dictionary<string, object>
+            {
+                { "request_id", id },
+                { "isApprove", 0 },
+                { "remarks", rmrk },
+                { "releasedType", "DID NOT RELEASE" }
+            };
+            databaseConnection.InsertData("request_status", data);
+
             MessageBox.Show("Request Disapproved Sucessfully");
             this.DialogResult = DialogResult.OK;
             this.Close();

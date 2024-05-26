@@ -58,6 +58,7 @@ namespace CNSC_Supply_and_Equipment_Management
             else if (userType == "CUSTODIAN")
             {
                 transactionsToolStripMenuItem.DropDownItems[1].Visible = false; //Disable Pending Request
+                buttonRefresh.Visible = false; //Disable Pending Request
                 
                 menuStrip1.Items[2].Visible = false; //Disable Records
                 recordsToolStripMenuItem.DropDownItems[2].Visible = false; //Disable Offices
@@ -127,7 +128,7 @@ namespace CNSC_Supply_and_Equipment_Management
 
                     // Fetch and bind data for Supply
                     string supplyQuery = @"
-                SELECT s.id, s.name, s.quantity, s.unit, s.description, s.unit_cost, s.inventory_item_no, s.estimated_useful_life
+                SELECT s.id, s.name, osr.quantity, s.unit, s.description, s.unit_cost, s.inventory_item_no, s.estimated_useful_life
                 FROM office_supply_records osr
                 JOIN supply s ON osr.supply_id = s.id
                 WHERE osr.office_id = @OfficeId";
@@ -137,7 +138,7 @@ namespace CNSC_Supply_and_Equipment_Management
 
                     // Fetch and bind data for Equipment
                     string equipmentQuery = @"
-                SELECT e.id, e.name, e.quantity, e.unit, e.unit_cost, e.description, e.property_number
+                SELECT e.id, e.name, oer.quantity, e.unit, e.unit_cost, e.description, e.property_number
                 FROM office_equipment_records oer
                 JOIN equipment e ON oer.equipment_id = e.id
                 WHERE oer.office_id = @OfficeId";
@@ -250,22 +251,29 @@ namespace CNSC_Supply_and_Equipment_Management
 
         private void approvedRequestToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            new ViewRequestRecord().Show();
+            new ViewRequestRecord("Approved").Show();
         }
 
         private void disapprovedRequestsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            new ViewRequestRecord("Disapproved").Show();
         }
 
         private void recordsToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            new CustodianItemSupplyEquipmentRecordsForm().Show();
+            new CustodianItemSupplyEquipmentRecordsForm("Supply").Show();
         }
 
         private void equipmentToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            new CustodianItemSupplyEquipmentRecordsForm().Show();
+            new CustodianItemSupplyEquipmentRecordsForm("Equipment").Show();
+        }
+
+        private void buttonRefresh_Click(object sender, EventArgs e)
+        {
+            tabControlOfficesRecord.TabPages.Clear();
+
+            HandleMainBoard();
         }
     }
 }

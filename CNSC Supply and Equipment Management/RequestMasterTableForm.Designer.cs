@@ -32,6 +32,7 @@ namespace CNSC_Supply_and_Equipment_Management
             this.labelMain = new System.Windows.Forms.Label();
             this.textBoxSearch = new System.Windows.Forms.TextBox();
             this.dataGridViewAllRequest = new System.Windows.Forms.DataGridView();
+            this.buttonRefresh = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewAllRequest)).BeginInit();
             this.SuspendLayout();
             // 
@@ -64,17 +65,28 @@ namespace CNSC_Supply_and_Equipment_Management
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridViewAllRequest.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridViewAllRequest.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewAllRequest.Location = new System.Drawing.Point(17, 53);
+            this.dataGridViewAllRequest.Location = new System.Drawing.Point(17, 86);
             this.dataGridViewAllRequest.Name = "dataGridViewAllRequest";
             this.dataGridViewAllRequest.ReadOnly = true;
-            this.dataGridViewAllRequest.Size = new System.Drawing.Size(896, 656);
+            this.dataGridViewAllRequest.Size = new System.Drawing.Size(896, 623);
             this.dataGridViewAllRequest.TabIndex = 11;
+            // 
+            // buttonRefresh
+            // 
+            this.buttonRefresh.Location = new System.Drawing.Point(815, 45);
+            this.buttonRefresh.Name = "buttonRefresh";
+            this.buttonRefresh.Size = new System.Drawing.Size(98, 38);
+            this.buttonRefresh.TabIndex = 12;
+            this.buttonRefresh.Text = "Refresh";
+            this.buttonRefresh.UseVisualStyleBackColor = true;
+            this.buttonRefresh.Click += new System.EventHandler(this.buttonRefresh_Click);
             // 
             // RequestMasterTableForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(925, 721);
+            this.Controls.Add(this.buttonRefresh);
             this.Controls.Add(this.dataGridViewAllRequest);
             this.Controls.Add(this.textBoxSearch);
             this.Controls.Add(this.labelMain);
@@ -92,5 +104,6 @@ namespace CNSC_Supply_and_Equipment_Management
         private System.Windows.Forms.Label labelMain;
         private System.Windows.Forms.TextBox textBoxSearch;
         private System.Windows.Forms.DataGridView dataGridViewAllRequest;
+        private System.Windows.Forms.Button buttonRefresh;
     }
 }

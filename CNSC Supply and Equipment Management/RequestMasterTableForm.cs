@@ -22,6 +22,13 @@ namespace CNSC_Supply_and_Equipment_Management
         private void RequestMasterTableForm_Load(object sender, EventArgs e)
         {
             this.Icon = Icon.ExtractAssociatedIcon(Application.ExecutablePath);
+            LoadData();
+        }
+
+        private void LoadData(string term = "")
+        {
+            dataGridViewAllRequest.DataSource = null;
+
             string query = @"
                     SELECT 
                         r.request_id, 
@@ -34,16 +41,27 @@ namespace CNSC_Supply_and_Equipment_Management
                         r.submitted_date,
                         CASE 
                             WHEN rs.isApprove = 1 THEN 'APPROVED'
-                            ELSE 'PENDING FOR APPROVAL'
+                            ELSE 
+                                CASE
+                                    WHEN rs.releasedType = 'DID NOT RELEASE' THEN 'DID NOT APPROVE'
+                                    ELSE 'PENDING FOR APPROVAL'
+                                END
                         END AS approval_status
                     FROM 
                         request r
                     INNER JOIN 
                         custodian c ON r.custodian_id = c.id
                     LEFT JOIN
-                        request_status rs ON r.request_id = rs.request_id";
+                        request_status rs ON r.request_id = rs.request_id
+                    WHERE 
+                        c.name LIKE @Term";
 
-            DataTable dataTable = databaseConnection.ExecuteQuery(query);
+            var parameters = new Dictionary<string, object>
+            {
+                { "@Term", "%" + term + "%" } // Add wildcards to perform a partial match
+            };
+
+            DataTable dataTable = databaseConnection.ExecuteQuery(query, parameters);
 
             dataGridViewAllRequest.DataSource = dataTable;
 
@@ -54,34 +72,14 @@ namespace CNSC_Supply_and_Equipment_Management
         {
             dataGridViewAllRequest.DataSource = null;
             string searchTerm = textBoxSearch.Text.Trim();
+            LoadData(searchTerm);
+           
+        }
 
-            string query = @"
-                            SELECT 
-                                r.request_id, 
-                                c.name AS custodian_name, 
-                                r.unit, 
-                                r.description, 
-                                r.quantity, 
-                                r.remarks, 
-                                r.purpose, 
-                                r.submitted_date
-                            FROM 
-                                request r
-                            INNER JOIN 
-                                custodian c ON r.custodian_id = c.id
-                            WHERE 
-                                c.name LIKE @searchTerm";
+        private void buttonRefresh_Click(object sender, EventArgs e)
+        {
+            LoadData();
 
-            var parameters = new Dictionary<string, object>
-            {
-                {"@searchTerm", $"%{searchTerm}%" }
-            };
-
-            DataTable dataTable = databaseConnection.ExecuteQuery(query, parameters);
-
-            dataGridViewAllRequest.DataSource = dataTable;
-
-            dataGridViewAllRequest.Columns["request_id"].Visible = false;
         }
     }
 }

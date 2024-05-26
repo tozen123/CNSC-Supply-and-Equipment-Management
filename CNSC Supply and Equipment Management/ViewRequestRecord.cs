@@ -14,9 +14,11 @@ namespace CNSC_Supply_and_Equipment_Management
     public partial class ViewRequestRecord : Form
     {
         DatabaseConnection databaseConnection = new DatabaseConnection();
-
-        public ViewRequestRecord()
+        string typeofrequest = "";
+        public ViewRequestRecord(string type)
         {
+            typeofrequest = type;
+            
             InitializeComponent();
             this.StartPosition = FormStartPosition.CenterScreen;
         }
@@ -24,6 +26,8 @@ namespace CNSC_Supply_and_Equipment_Management
         private void ViewRequestRecord_Load(object sender, EventArgs e)
         {
             this.Icon = Icon.ExtractAssociatedIcon(Application.ExecutablePath);
+            label2.Text = typeofrequest + " Request Records";
+
             InitializeDataGridView();
             LoadData();
         }
@@ -100,23 +104,46 @@ namespace CNSC_Supply_and_Equipment_Management
         private void LoadData(string searchTerm = "")
         {
             string currentUserId = Main.currentUser.Id;
-            string query;
-            if (searchTerm == "")
+            string query = "";
+            if(typeofrequest == "Approved")
             {
-                query = @"
+                if (searchTerm == "")
+                {
+                    query = @"
                             SELECT r.request_id, rs.releasedType, r.quantity, r.unit, r.description, r.remarks, r.purpose, r.submitted_date
                             FROM request r
                             INNER JOIN request_status rs ON r.request_id = rs.request_id
                             WHERE r.custodian_id = @custodianId AND rs.isApprove = 1";
-            }
-            else
-            {
-                query = $@"
+                }
+                else
+                {
+                    query = $@"
                         SELECT r.request_id, rs.releasedType, r.quantity, r.unit, r.description, r.remarks, r.purpose, r.submitted_date
                         FROM request r
                         INNER JOIN request_status rs ON r.request_id = rs.request_id
                         WHERE r.custodian_id = @custodianId AND rs.isApprove = 1 AND r.description LIKE '%{searchTerm}%'";
+                }
             }
+            else if (typeofrequest == "Disapproved")
+            {
+                if (searchTerm == "")
+                {
+                    query = @"
+                            SELECT r.request_id, rs.releasedType, r.quantity, r.unit, r.description, r.remarks, r.purpose, r.submitted_date
+                            FROM request r
+                            INNER JOIN request_status rs ON r.request_id = rs.request_id
+                            WHERE r.custodian_id = @custodianId AND rs.isApprove = 0";
+                }
+                else
+                {
+                    query = $@"
+                        SELECT r.request_id, rs.releasedType, r.quantity, r.unit, r.description, r.remarks, r.purpose, r.submitted_date
+                        FROM request r
+                        INNER JOIN request_status rs ON r.request_id = rs.request_id
+                        WHERE r.custodian_id = @custodianId AND rs.isApprove = 0 AND r.description LIKE '%{searchTerm}%'";
+                }
+            }
+            
 
 
             var parameters = new Dictionary<string, object>
