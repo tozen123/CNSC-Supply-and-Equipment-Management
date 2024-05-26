@@ -39,6 +39,9 @@ namespace CNSC_Supply_and_Equipment_Management
             // 
             this.dataGridViewPending.AllowUserToAddRows = false;
             this.dataGridViewPending.AllowUserToDeleteRows = false;
+            this.dataGridViewPending.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridViewPending.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridViewPending.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewPending.Location = new System.Drawing.Point(13, 60);
