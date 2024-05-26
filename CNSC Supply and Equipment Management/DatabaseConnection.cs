@@ -79,5 +79,30 @@ namespace CNSC_Supply_and_Equipment_Management
             var sParams = parameters.Select(d => new MySqlParameter(d.Key, d.Value)).ToArray();
             ExecuteNonQuery(query, sParams);
         }
+
+        public int InsertDataAndGetID(string tableName, Dictionary<string, object> data)
+        {
+            var columns = string.Join(", ", data.Keys);
+            var values = string.Join(", ", data.Keys.Select(key => "@" + key));
+            var query = $"INSERT INTO {tableName} ({columns}) VALUES ({values})";
+
+            using (var connection = GetConnection())
+            {
+                using (var command = new MySqlCommand(query, connection))
+                {
+                    foreach (var param in data)
+                    {
+                        command.Parameters.AddWithValue("@" + param.Key, param.Value);
+                    }
+
+                    connection.Open();
+                    command.ExecuteNonQuery();
+
+                    // Get the last inserted ID
+                    command.CommandText = "SELECT LAST_INSERT_ID()";
+                    return Convert.ToInt32(command.ExecuteScalar());
+                }
+            }
+        }
     }
 }

@@ -34,7 +34,7 @@ namespace CNSC_Supply_and_Equipment_Management
                         r.submitted_date,
                         CASE 
                             WHEN rs.isApprove = 1 THEN 'APPROVED'
-                            ELSE 'NOT APPROVED'
+                            ELSE 'PENDING FOR APPROVAL'
                         END AS approval_status
                     FROM 
                         request r

@@ -239,7 +239,7 @@ namespace CNSC_Supply_and_Equipment_Management
             this.tabControlOfficesRecord.Location = new System.Drawing.Point(12, 136);
             this.tabControlOfficesRecord.Name = "tabControlOfficesRecord";
             this.tabControlOfficesRecord.SelectedIndex = 0;
-            this.tabControlOfficesRecord.Size = new System.Drawing.Size(981, 547);
+            this.tabControlOfficesRecord.Size = new System.Drawing.Size(981, 526);
             this.tabControlOfficesRecord.TabIndex = 8;
             // 
             // pictureBox1

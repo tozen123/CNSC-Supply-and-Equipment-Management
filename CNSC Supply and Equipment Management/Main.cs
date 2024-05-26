@@ -71,21 +71,95 @@ namespace CNSC_Supply_and_Equipment_Management
 
         public void HandleMainBoard()
         {
-            string query = "SELECT acronym FROM office";
-
+            string query = "SELECT id, acronym FROM office";
+            int adder = 380;
             DataTable result = databaseConnection.ExecuteQuery(query);
+
             if (result.Rows.Count > 0)
             {
-                string acr;
-                for (int i = 0; i < result.Rows.Count; i++)
+                foreach (DataRow row in result.Rows)
                 {
-                    acr = result.Rows[i]["acronym"].ToString();
-                    tabControlOfficesRecord.TabPages.Add(acr);
+                    int officeId = Convert.ToInt32(row["id"]);
+                    string acronym = row["acronym"].ToString();
+                    TabPage tabPage = new TabPage(acronym);
+
+                    int margin = 10;
+                    int gridWidth = (tabPage.Width - (3 * margin)) / 2;
+                    int gridHeight = tabPage.Height - (2 * margin);
+
+                    Label labelSupply = new Label
+                    {
+                        Text = "Supply",
+                        Location = new Point(margin, margin),
+                        AutoSize = true
+                    };
+
+                    Label labelEquipment = new Label
+                    {
+                        Text = "Equipment",
+                        Location = new Point(gridWidth + (2 * margin) + adder, margin),
+                        AutoSize = true
+                    };
+
+                    DataGridView dataGridView1 = new DataGridView
+                    {
+                        Name = "dataGridViewSupply",
+                        Location = new Point(margin, margin + labelSupply.Height + 5),
+                        Size = new Size(gridWidth + adder, gridHeight + adder),
+                        AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill,
+                        ReadOnly = true,
+                        AllowUserToAddRows = false,
+                        AllowUserToDeleteRows = false,
+                        AllowUserToOrderColumns = false
+                    };
+
+                    DataGridView dataGridView2 = new DataGridView
+                    {
+                        Name = "dataGridViewEquipment",
+                        Location = new Point(gridWidth + (2 * margin) + adder, margin + labelEquipment.Height + 5),
+                        Size = new Size(gridWidth + adder, gridHeight + adder),
+                        AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill,
+                        ReadOnly = true,
+                        AllowUserToAddRows = false,
+                        AllowUserToDeleteRows = false,
+                        AllowUserToOrderColumns = false
+                    };
+
+                    // Fetch and bind data for Supply
+                    string supplyQuery = @"
+                SELECT s.id, s.name, s.quantity, s.unit, s.description, s.unit_cost, s.inventory_item_no, s.estimated_useful_life
+                FROM office_supply_records osr
+                JOIN supply s ON osr.supply_id = s.id
+                WHERE osr.office_id = @OfficeId";
+                    var supplyParameters = new Dictionary<string, object> { { "@OfficeId", officeId } };
+                    DataTable supplyData = databaseConnection.ExecuteQuery(supplyQuery, supplyParameters);
+                    dataGridView1.DataSource = supplyData;
+
+                    // Fetch and bind data for Equipment
+                    string equipmentQuery = @"
+                SELECT e.id, e.name, e.quantity, e.unit, e.unit_cost, e.description, e.property_number
+                FROM office_equipment_records oer
+                JOIN equipment e ON oer.equipment_id = e.id
+                WHERE oer.office_id = @OfficeId";
+                    var equipmentParameters = new Dictionary<string, object> { { "@OfficeId", officeId } };
+                    DataTable equipmentData = databaseConnection.ExecuteQuery(equipmentQuery, equipmentParameters);
+                    dataGridView2.DataSource = equipmentData;
+
+                    tabPage.Controls.Add(labelSupply);
+                    tabPage.Controls.Add(dataGridView1);
+                    tabPage.Controls.Add(labelEquipment);
+                    tabPage.Controls.Add(dataGridView2);
+
+                    tabControlOfficesRecord.TabPages.Add(tabPage);
                 }
- 
-             
             }
         }
+
+
+
+
+
+
 
         private string GetUserOffice()
         {

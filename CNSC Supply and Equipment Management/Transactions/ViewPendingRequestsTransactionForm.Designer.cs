@@ -42,8 +42,9 @@ namespace CNSC_Supply_and_Equipment_Management.Transactions
             // 
             // flowLayoutPanelRequests
             // 
-            this.flowLayoutPanelRequests.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
+            this.flowLayoutPanelRequests.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.flowLayoutPanelRequests.AutoScroll = true;
             this.flowLayoutPanelRequests.BackColor = System.Drawing.SystemColors.ControlLight;
             this.flowLayoutPanelRequests.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;

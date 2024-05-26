@@ -57,9 +57,9 @@ namespace CNSC_Supply_and_Equipment_Management.Tools
             this.labelMain.Font = new System.Drawing.Font("Montserrat", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelMain.Location = new System.Drawing.Point(12, 24);
             this.labelMain.Name = "labelMain";
-            this.labelMain.Size = new System.Drawing.Size(319, 29);
+            this.labelMain.Size = new System.Drawing.Size(296, 29);
             this.labelMain.TabIndex = 13;
-            this.labelMain.Text = "Add Unique Supply Request";
+            this.labelMain.Text = "Add Unique Item Request";
             // 
             // label2
             // 
@@ -134,7 +134,7 @@ namespace CNSC_Supply_and_Equipment_Management.Tools
             // 
             // buttonConfirm
             // 
-            this.buttonConfirm.Location = new System.Drawing.Point(59, 312);
+            this.buttonConfirm.Location = new System.Drawing.Point(59, 315);
             this.buttonConfirm.Name = "buttonConfirm";
             this.buttonConfirm.Size = new System.Drawing.Size(188, 46);
             this.buttonConfirm.TabIndex = 24;
@@ -144,7 +144,7 @@ namespace CNSC_Supply_and_Equipment_Management.Tools
             // 
             // buttonCancel
             // 
-            this.buttonCancel.Location = new System.Drawing.Point(266, 312);
+            this.buttonCancel.Location = new System.Drawing.Point(266, 315);
             this.buttonCancel.Name = "buttonCancel";
             this.buttonCancel.Size = new System.Drawing.Size(188, 46);
             this.buttonCancel.TabIndex = 25;
@@ -155,7 +155,7 @@ namespace CNSC_Supply_and_Equipment_Management.Tools
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(505, 370);
+            this.ClientSize = new System.Drawing.Size(505, 373);
             this.Controls.Add(this.buttonCancel);
             this.Controls.Add(this.buttonConfirm);
             this.Controls.Add(this.comboBoxUnit);

@@ -170,17 +170,17 @@ namespace CNSC_Supply_and_Equipment_Management.Transactions
 
                     if (type == "PAR")
                     {
-                        //ReleasePAR();
+                        ReleasePAR();
                         // When there is unique, create new item from that to EQUIPMENT
                     }
                     else if (type == "ICS")
                     {
-                        //ReleaseICS();
+                        ReleaseICS();
                         // When there is unique, create new item from that to SUPPLY
                     }
 
-                    //SetStatusRequest(1, type);
-
+                    SetStatusRequest(1, type);
+                    
                     UpdateItemQuantity();
 
                     MessageBox.Show("Request Approved Sucessfully");
@@ -195,14 +195,133 @@ namespace CNSC_Supply_and_Equipment_Management.Transactions
             }
 
         }
+        private int GetUserOffice()
+        {
+            //GetUserOffice
+
+
+            int office_id = -1;
+
+            string query = "SELECT * FROM request WHERE request_id = @RequestId";
+            var parameters = new Dictionary<string, object> { { "@RequestId", id } };
+            DataTable table = databaseConnection.ExecuteQuery(query, parameters);
+            foreach (DataRow item in table.Rows)
+            {
+                int custodianId = Convert.ToInt32(item["custodian_id"]);
+                string custodianQuery = "SELECT * FROM custodian WHERE id = @CustodianId";
+                var custodianParameters = new Dictionary<string, object> { { "@CustodianId", custodianId } };
+                DataTable custodianTable = databaseConnection.ExecuteQuery(custodianQuery, custodianParameters);
+                int officeId = Convert.ToInt32(custodianTable.Rows[0]["office_id"]);
+
+                office_id = officeId;
+            }
+            return office_id;
+        }
+        private void OfficeAddItem(string itemType)
+        {
+            // Add the unique to the records of offices
+           
+            Console.WriteLine(itemType);
+            string num_label = "";
+            string targetType = "";
+            string idColumnName = "";
+            if(itemType == "supply")
+            {
+                num_label = "inventory_item_no";
+                targetType = "office_supply_records";
+                idColumnName = "supply_id";
+            }
+            else if (itemType == "equipment")
+            {
+                num_label = "property_number";
+                targetType = "office_equipment_records";
+                idColumnName = "equipment_id";
+            }
+
+            int officeId = GetUserOffice();
+
+
+            foreach (DataGridViewRow Datarow in dataGridViewListOfRequest.Rows)
+            {
+                if (Datarow.Cells["isUnique"].Value.ToString() == "1")
+                {
+                    var data = new Dictionary<string, object>
+                    {
+                        { "quantity",   0},// Datarow.Cells["quantity"].Value
+                        { "unit", Datarow.Cells["unit"].Value },
+                        { "unit_cost",  Datarow.Cells["unit_cost"].Value },
+                        { "name", Datarow.Cells["description"].Value.ToString().Split('|')[0].Trim() },
+                        { "description", Datarow.Cells["description"].Value.ToString().Split('|')[1].Trim() },
+                        { num_label, "" }
+                    };
+
+                    int generatedId = databaseConnection.InsertDataAndGetID(itemType, data);
+
+
+
+                    //Add to OfficeRecords
+                    var data2 = new Dictionary<string, object>
+                    {
+                        { "quantity",   Datarow.Cells["quantity"].Value},
+                        { idColumnName, generatedId },
+                        { "office_id",  officeId }
+                        
+                    };
+
+                    databaseConnection.InsertData(targetType, data2);
+
+                    Console.WriteLine($"Inserted ID: {generatedId}");
+                }
+                else
+                {
+                    if (Datarow.Cells["isUnique"].Value.ToString() == "0")
+                    {
+                        var data = new Dictionary<string, object>
+                    {
+                        { "quantity",   Datarow.Cells["quantity"].Value},
+                        { "equipment_id", Datarow.Cells["item_id"].Value },
+                        { "office_id",  officeId }
+
+                    };
+
+                        databaseConnection.InsertData(targetType, data);
+
+                    }
+                }
+            } 
+            
+
+
+
+        }
+       
+
         private void ReleaseICS()
         {
+            OfficeAddItem("supply");
+
+            string query = "SELECT custodian_id FROM request WHERE request_id = @RequestId";
+            var parameters = new Dictionary<string, object> { { "@RequestId", id } };
+            DataTable table = databaseConnection.ExecuteQuery(query, parameters);
+
+            int cur_id = Convert.ToInt32(Main.currentUser.Id);
+            int custodian_id = Convert.ToInt32(table.Rows[0]["custodian_id"]);
+
+            var data = new Dictionary<string, object>
+            {
+                { "request_id",  id},
+                { "admin_id", cur_id },
+                { "custodian_id", custodian_id }
+            };
+
+            databaseConnection.InsertData("ics", data);
 
         }
 
         private void ReleasePAR()
         {
-            
+            OfficeAddItem("equipment");
+
             string query = "SELECT custodian_id FROM request WHERE request_id = @RequestId";
             var parameters = new Dictionary<string, object> { { "@RequestId", id } };
             DataTable table = databaseConnection.ExecuteQuery(query, parameters);
