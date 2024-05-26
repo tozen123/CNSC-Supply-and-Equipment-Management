@@ -74,6 +74,7 @@ namespace CNSC_Supply_and_Equipment_Management
         {
             using (CreateOfficeForm form = new CreateOfficeForm())
             {
+                form.SetTypeOfAction("Create");
                 var result = form.ShowDialog();
                 if (result == DialogResult.OK)
                 {
@@ -87,11 +88,31 @@ namespace CNSC_Supply_and_Equipment_Management
             
         }
 
+        private void UpdateEntry(DataGridViewRow row)
+        {
+            using (CreateOfficeForm form = new CreateOfficeForm())
+            {
+                form.SetTypeOfAction("Update");
+                form.SetDataReference(row);
+
+                var result = form.ShowDialog();
+                if (result == DialogResult.OK)
+                {
+                    LoadOfficeData();
+                }
+                else
+                {
+                    this.Close();
+                }
+            }
+        }
         private void dataGridViewOffices_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0 && e.ColumnIndex == dataGridViewOffices.Columns["Update"].Index)
             {
                 DataGridViewRow selectedRow = dataGridViewOffices.Rows[e.RowIndex];
+                UpdateEntry(selectedRow);
+
             }
             else if (e.RowIndex >= 0 && e.ColumnIndex == dataGridViewOffices.Columns["Delete"].Index)
             {

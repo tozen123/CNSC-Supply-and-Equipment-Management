@@ -160,6 +160,30 @@ namespace CNSC_Supply_and_Equipment_Management
             if (e.RowIndex >= 0 && e.ColumnIndex == dataGridView.Columns["Update"].Index)
             {
                 DataGridViewRow selectedRow = dataGridView.Rows[e.RowIndex];
+                int id = Convert.ToInt32(selectedRow.Cells["id"].Value);
+
+                if (itemType == "supply")
+                {
+                    using (CreateSupplyForm form = new CreateSupplyForm(id))
+                    {
+                        var result = form.ShowDialog();
+                        if (result == DialogResult.OK)
+                        {
+                            LoadData();
+                        }
+                    }
+                }
+                else if (itemType == "equipment")
+                {
+                    using (CreateEquipmentForm form = new CreateEquipmentForm(id))
+                    {
+                        var result = form.ShowDialog();
+                        if (result == DialogResult.OK)
+                        {
+                            LoadData();
+                        }
+                    }
+                }
             }
             else if (e.RowIndex >= 0 && e.ColumnIndex == dataGridView.Columns["Delete"].Index)
             {

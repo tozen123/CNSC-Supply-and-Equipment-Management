@@ -13,10 +13,12 @@ namespace CNSC_Supply_and_Equipment_Management
     public partial class CreateSupplyForm : Form
     {
         DatabaseConnection databaseConnection = new DatabaseConnection();
-        public CreateSupplyForm()
+        int supplyIdToUpdate = -1; 
+
+        public CreateSupplyForm(int idToUpdate = -1)
         {
             InitializeComponent();
-            this.StartPosition = FormStartPosition.CenterScreen;
+            supplyIdToUpdate = idToUpdate; 
         }
 
         private void buttonAddNewSupply_Click(object sender, EventArgs e)
@@ -71,7 +73,7 @@ namespace CNSC_Supply_and_Equipment_Management
             if (string.IsNullOrWhiteSpace(useful) || !int.TryParse(useful, out int usefulLife))
             {
                 MessageBox.Show("Please enter a valid useful life in years.", "Input Error");
-                return;
+                return; 
             }
 
             var data = new Dictionary<string, object>
@@ -85,16 +87,53 @@ namespace CNSC_Supply_and_Equipment_Management
                 { "estimated_useful_life", useful }
             };
 
-            databaseConnection.InsertData("supply", data);
+            try
+            {
+                if (supplyIdToUpdate == -1)
+                {
+                    databaseConnection.InsertData("supply", data);
+                    MessageBox.Show("Supply added successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    string setClause = string.Join(", ", data.Select(kv => $"{kv.Key}=@{kv.Key}"));
+                    string condition = $"id = {supplyIdToUpdate}";
+                    databaseConnection.UpdateData("supply", setClause, condition, data);
+                    MessageBox.Show("Supply updated successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
 
-            MessageBox.Show("Success", "Supply Added");
-            this.DialogResult = DialogResult.OK;
-            this.Close();
+                this.DialogResult = DialogResult.OK;
+                this.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void CreateSupplyForm_Load(object sender, EventArgs e)
         {
             this.Icon = Icon.ExtractAssociatedIcon(Application.ExecutablePath);
+            if (supplyIdToUpdate != -1)
+            {
+                LoadDataForUpdate();
+            }
+        }
+        private void LoadDataForUpdate()
+        {
+            buttonAddNewSupply.Text = "Update Data";
+            string query = $"SELECT * FROM supply WHERE id = {supplyIdToUpdate}";
+            DataTable supplyData = databaseConnection.ExecuteQuery(query);
+            if (supplyData.Rows.Count > 0)
+            {
+                textBoxSupplyName.Text = supplyData.Rows[0]["name"].ToString();
+                textBoxSupplyDescription.Text = supplyData.Rows[0]["description"].ToString();
+                textBoxSupplyQuantity.Text = supplyData.Rows[0]["quantity"].ToString();
+                textBoxunitCost.Text = supplyData.Rows[0]["unit_cost"].ToString();
+                textBoxInvenItemNo.Text = supplyData.Rows[0]["inventory_item_no"].ToString();
+                textBoxUsefulLife.Text = supplyData.Rows[0]["estimated_useful_life"].ToString();
+                comboBoxUnit.SelectedItem = supplyData.Rows[0]["unit"].ToString();
+            }
         }
     }
 }
